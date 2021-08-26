@@ -2,7 +2,7 @@ import os
 import zipfile
 
 #Diameters of borders
-baseSize = 480
+baseSize = 48
 smallSize = baseSize / 3
 
 #TIMES ARE IN SECONDS
