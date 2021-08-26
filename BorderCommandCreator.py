@@ -59,7 +59,7 @@ with open(f"{startPath}border_creator.mcfunction", "w") as borderFile:
     borderFile.write("scoreboard players set borderTimer BorderTimer 0\n")
 
 #Create Inital Shrink
-with open(f"{startPath}start_border_shrink.mcfunton", "w") as borderFile:
+with open(f"{startPath}start_border_shrink.mcfunction", "w") as borderFile:
     borderFile.write(f"worldborder set {baseSize} {initialTimeToShrinkOver}\n")
 
 #Shrink border to first segment
