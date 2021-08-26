@@ -1,3 +1,3 @@
-worldborder set 192
-worldborder center -64.0 64.0
-worldborder set 64.0 60
+worldborder set 480
+worldborder center -160.0 160.0
+worldborder set 160.0 5
