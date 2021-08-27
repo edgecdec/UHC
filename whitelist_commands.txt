@@ -1,0 +1,4 @@
+/whitelist add DumbDumb1
+/whitelist add DumbDumb2
+/whitelist add DumbDumb3
+/whitelist add DumbDumb4
