@@ -2,22 +2,22 @@ import os
 import zipfile
 
 #Diameters of borders
-baseSize = 48
+baseSize = 128
 smallSize = baseSize / 3
 
 #TIMES ARE IN SECONDS
-initialTimeBeforeStartShrinking = 0
-initialTimeToShrinkOver = 20
-defaultTimeToShrinkOver = 5
-initialWorldBorderDiameter = 480
-timeBetweenShrinks = 10
+initialTimeBeforeStartShrinking = 30 * 60
+initialTimeToShrinkOver = 60 * 60
+defaultTimeToShrinkOver = 2 * 60
+initialWorldBorderDiameter = 4000
+timeBetweenShrinks = 1 * 60
 
 #Center Coords
 xCenter = 0
 zCenter = 0
 
-startPath = "uhc/data/uhc/functions/border/"
-callPath = "uhc:border/"
+START_PATH = "uhc/data/uhc/functions/border/"
+CALL_PATH = "uhc:border/"
 
 #Add to tick function:
     #function uhc:border/border_helper
@@ -46,36 +46,36 @@ def createBorderSegmentCode(startPath, name, xPlusMinus, yPlusMinus, isLast=Fals
             borderFile.write(f"scoreboard players set borderTimer BorderTimer {timeToSetBackTo}\n")
 
 #See each tick if we need to change border
-with open(f"{startPath}border_helper.mcfunction", "w") as borderFile:
+with open(f"{START_PATH}border_helper.mcfunction", "w") as borderFile:
     startTime = initialTimeBeforeStartShrinking * 20
-    borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}start_border_shrink\n")
+    borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {CALL_PATH}start_border_shrink\n")
     startTime += initialTimeToShrinkOver * 20
     timeToSetBackTo = startTime - (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
 
     segmentNames = ['one', 'two', 'three', 'four']
 
     for segmentName in segmentNames:
-        borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}border_segment_{segmentName}\n")
+        borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {CALL_PATH}border_segment_{segmentName}\n")
         startTime += (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
 
     borderFile.write("scoreboard players add borderTimer BorderTimer 1\n")
 
 #Create Initial Border
-with open(f"{startPath}border_creator.mcfunction", "w") as borderFile:
+with open(f"{START_PATH}border_creator.mcfunction", "w") as borderFile:
     borderFile.write(f"worldborder set {initialWorldBorderDiameter}\n")
     borderFile.write(f"worldborder center {xCenter} {zCenter}\n")
     borderFile.write("scoreboard objectives add BorderTimer dummy \"Border Timer\"\n")
     borderFile.write("scoreboard players set borderTimer BorderTimer 0\n")
 
 #Create Inital Shrink
-with open(f"{startPath}start_border_shrink.mcfunction", "w") as borderFile:
+with open(f"{START_PATH}start_border_shrink.mcfunction", "w") as borderFile:
     borderFile.write(f"worldborder set {baseSize} {initialTimeToShrinkOver}\n")
 
 #Shrink border in segments
-createBorderSegmentCode(startPath, 'one', 1, 1, False)
-createBorderSegmentCode(startPath, 'two', -1, 1, False)
-createBorderSegmentCode(startPath, 'three', -1, -1, False)
-createBorderSegmentCode(startPath, 'four', 1, -1, True)
+createBorderSegmentCode(START_PATH, 'one', 1, 1, False)
+createBorderSegmentCode(START_PATH, 'two', -1, 1, False)
+createBorderSegmentCode(START_PATH, 'three', -1, -1, False)
+createBorderSegmentCode(START_PATH, 'four', 1, -1, True)
 
 #Turn whole datapack into .zip file
 zipf = zipfile.ZipFile('UHC.zip', 'w', zipfile.ZIP_DEFLATED)

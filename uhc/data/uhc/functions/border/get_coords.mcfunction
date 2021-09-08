@@ -1,0 +1,2 @@
+execute as @a run tellraw @a ["",{"selector":"@s"},{"text":" is at x="},{"score":{"name":"@s","objective":"PosX"}},{"text":" | y="},{"score":{"name":"@s","objective":"PosY"}},{"text":" | z="},{"score":{"name":"@s","objective":"PosZ"}}]
+setblock ~ ~ ~ minecraft:chest{LootTable:"uhc:blocks/uhc_common"} replace

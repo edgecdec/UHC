@@ -1,0 +1,24 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:loot_table",
+          "weight": 3,
+          "name": "uhc:blocks/uhc_rare"
+        },
+        {
+          "type": "minecraft:loot_table",
+          "weight": 5,
+          "name": "uhc:blocks/uhc_common"
+        },
+	{
+          "type": "minecraft:loot_table",
+          "weight": 1,
+          "name": "uhc:blocks/uhc_legendary"
+        }
+      ]
+    }
+  ]
+}

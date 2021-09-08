@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#G#",
+        "GDG",
+        " G "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:ghast_tear"
+        },
+        "G": {
+            "item": "minecraft:gold_block"
+        },
+        "D": {
+            "item": "minecraft:diamond_block"
+        }
+    },
+    "result": {
+        "item": "minecraft:totem_of_undying",
+        "count": 1
+    }
+}
