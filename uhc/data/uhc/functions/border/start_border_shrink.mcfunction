@@ -1,1 +1,1 @@
-worldborder set 480 20
+worldborder set 48 20

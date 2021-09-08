@@ -28,7 +28,7 @@ def buildCommands(xCenter, zCenter):
     line3 = f"worldborder set {smallSize} {defaultTimeToShrinkOver}\n"
     return f"{line1}{line2}{line3}"
 
-def zipdir(path, ziph):
+def zipDir(path, ziph):
     # ziph is zipfile handle
     for root, dirs, files in os.walk(path):
         for file in files:
@@ -36,19 +36,28 @@ def zipdir(path, ziph):
                        os.path.relpath(os.path.join(root, file),
                                        os.path.join(path, '..')))
 
+def createBorderSegmentCode(startPath, name, xPlusMinus, yPlusMinus, isLast=False):
+    with open(f"{startPath}border_segment_{name}.mcfunction", "w") as borderFile:
+        newXCenter = xCenter + (smallSize * xPlusMinus)
+        newZCenter = zCenter + (smallSize * yPlusMinus)
+        borderFile.write(buildCommands(newXCenter, newZCenter))
+
+        if isLast: # Repeat border shrinking
+            borderFile.write(f"scoreboard players set borderTimer BorderTimer {timeToSetBackTo}\n")
+
 #See each tick if we need to change border
 with open(f"{startPath}border_helper.mcfunction", "w") as borderFile:
     startTime = initialTimeBeforeStartShrinking * 20
     borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}start_border_shrink\n")
     startTime += initialTimeToShrinkOver * 20
     timeToSetBackTo = startTime - (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
-    borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}border_segment_one\n")
-    startTime += (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
-    borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}border_segment_two\n")
-    startTime += (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
-    borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}border_segment_three\n")
-    startTime += (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
-    borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}border_segment_four\n")
+
+    segmentNames = ['one', 'two', 'three', 'four']
+
+    for segmentName in segmentNames:
+        borderFile.write(f"execute if score borderTimer BorderTimer matches {startTime} run function {callPath}border_segment_{segmentName}\n")
+        startTime += (defaultTimeToShrinkOver + timeBetweenShrinks) * 20
+
     borderFile.write("scoreboard players add borderTimer BorderTimer 1\n")
 
 #Create Initial Border
@@ -62,33 +71,13 @@ with open(f"{startPath}border_creator.mcfunction", "w") as borderFile:
 with open(f"{startPath}start_border_shrink.mcfunction", "w") as borderFile:
     borderFile.write(f"worldborder set {baseSize} {initialTimeToShrinkOver}\n")
 
-#Shrink border to first segment
-with open(f"{startPath}border_segment_one.mcfunction", "w") as borderFile:
-    newXCenter = xCenter + smallSize
-    newZCenter = zCenter + smallSize
-    borderFile.write(buildCommands(newXCenter, newZCenter))
-
-#Shrink border to second segment
-with open(f"{startPath}border_segment_two.mcfunction", "w") as borderFile:
-    newXCenter = xCenter - smallSize
-    newZCenter = zCenter + smallSize
-    borderFile.write(buildCommands(newXCenter, newZCenter))
-
-#Shrink border to third segment
-with open(f"{startPath}border_segment_three.mcfunction", "w") as borderFile:
-    newXCenter = xCenter - smallSize
-    newZCenter = zCenter - smallSize
-    borderFile.write(buildCommands(newXCenter, newZCenter))
-
-#Shrink border to foruth segment & start repeart
-with open(f"{startPath}border_segment_four.mcfunction", "w") as borderFile:
-    newXCenter = xCenter + smallSize
-    newZCenter = zCenter - smallSize
-    borderFile.write(buildCommands(newXCenter, newZCenter))
-    #Repeat border shrinking
-    borderFile.write(f"scoreboard players set borderTimer BorderTimer {timeToSetBackTo}\n")
+#Shrink border in segments
+createBorderSegmentCode(startPath, 'one', 1, 1, False)
+createBorderSegmentCode(startPath, 'two', -1, 1, False)
+createBorderSegmentCode(startPath, 'three', -1, -1, False)
+createBorderSegmentCode(startPath, 'four', 1, -1, True)
 
 #Turn whole datapack into .zip file
 zipf = zipfile.ZipFile('UHC.zip', 'w', zipfile.ZIP_DEFLATED)
-zipdir('uhc/', zipf)
+zipDir('uhc/', zipf)
 zipf.close()
