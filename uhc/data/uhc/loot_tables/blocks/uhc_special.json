@@ -5,13 +5,13 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "weight": 2,
-          "name": "uhc:blocks/uhc_rare"
+          "weight": 1,
+          "name": "uhc:blocks/uhc_legendary"
         },
         {
           "type": "minecraft:loot_table",
-          "weight": 4,
-          "name": "uhc:blocks/uhc_common"
+          "weight": 1,
+          "name": "uhc:blocks/uhc_unique"
         }
       ]
     }

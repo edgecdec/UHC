@@ -1,51 +1,16 @@
 {
+  "type": "minecraft:chest",
   "pools": [
     {
       "rolls": {
-        "min": 4,
-        "max": 6
+        "min": 2,
+        "max": 3
       },
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:enchanted_book",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": {
-                "min": 3,
-                "max": 5
-              }
-            },
-            {
-              "function": "minecraft:enchant_randomly",
-              "levels": 0,
-              "count": 1,
-              "enchantments": [
-                "minecraft:power",
-                "minecraft:unbreaking",
-                "minecraft:protection",
-                "minecraft:sharpness"
-              ]
-            }
-          ],
-          "weight": 6
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:shulker_box",
-          "functions": [
-            {
-              "function": "minecraft:set_count",
-              "count": 1
-            }
-          ],
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
-          "name": "minecraft:netherite_ingot",
-          "weight": 4,
+          "weight": 3,
+          "name": "minecraft:totem_of_undying",
           "functions": [
             {
               "function": "minecraft:set_count",
@@ -55,6 +20,51 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 12,
+          "name": "minecraft:book",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 5
+              },
+              "add": true
+            },
+            {
+              "function": "minecraft:enchant_with_levels",
+              "levels": {
+                "min": 30,
+                "max": 30
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "minecraft:shulker_box",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "minecraft:netherite_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
           "name": "minecraft:enchanted_golden_apple",
           "functions": [
             {
@@ -64,11 +74,9 @@
                 "max": 1
               }
             }
-          ],
-          "weight": 5
+          ]
         }
       ]
     }
-  ],
-  "type": "minecraft:chest"
+  ]
 }
