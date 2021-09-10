@@ -65,5 +65,7 @@ with open(startPath + "create_teams_temp.mcfunction", "w") as outfile:
 with open("whitelist_commands.txt", "w") as outfile:
     for team in teams:
         for player in team.players:
+            if player == '':
+                continue
             outfile.write(f"/whitelist add {player}\n")
 
