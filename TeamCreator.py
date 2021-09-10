@@ -58,6 +58,8 @@ with open(startPath + "create_teams.mcfunction", "w") as outfile:
         outfile.write(f'team modify team{curTeamNum} color {team.getTeamColorName()}\n')
         outfile.write(f'team modify team{curTeamNum} friendlyFire false\n')
         for player in team.players:
+            if player == '':
+                continue
             outfile.write(f'team join team{curTeamNum} {player}\n')
         outfile.write(f'\n')
 
