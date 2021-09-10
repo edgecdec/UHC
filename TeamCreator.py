@@ -50,7 +50,7 @@ for team in teams:
     print(team)
 
 # Create Teams and add players to them
-with open(startPath + "create_teams_temp.mcfunction", "w") as outfile:
+with open(startPath + "create_teams.mcfunction", "w") as outfile:
     for team in teams:
         curTeamNum = team.getNumber()
         outfile.write(f'#Create Team {curTeamNum} and add players\n')
@@ -67,5 +67,5 @@ with open("whitelist_commands.txt", "w") as outfile:
         for player in team.players:
             if player == '':
                 continue
-            outfile.write(f"/whitelist add {player}\n")
+            outfile.write(f"execute as @p run whitelist add {player}\n")
 

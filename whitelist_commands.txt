@@ -1,25 +1,25 @@
-/whitelist add DumbDumb1
-/whitelist add DumbDumb2
-/whitelist add DumbDumb3
-/whitelist add DumbDumb4
-/whitelist add windcat_
-/whitelist add ZockerPlaysMc
-/whitelist add oidoldol
-/whitelist add Attack
-/whitelist add Rindin
-/whitelist add vNori 
-/whitelist add JRichGod
-/whitelist add JamezLP
-/whitelist add Goat_Wizard
-/whitelist add LeggoLogan
-/whitelist add bigbeter
-/whitelist add TendieFarmer
-/whitelist add Snikklees
-/whitelist add koolkbraza
-/whitelist add TreeRex0
-/whitelist add ShoneBow
-/whitelist add Worpp
-/whitelist add Lavaur
-/whitelist add SkywarsLobby
-/whitelist add Hinduu
-/whitelist add Marshmallows7920
+execute as @p run whitelist add DumbDumb1
+execute as @p run whitelist add DumbDumb2
+execute as @p run whitelist add DumbDumb3
+execute as @p run whitelist add DumbDumb4
+execute as @p run whitelist add windcat_
+execute as @p run whitelist add ZockerPlaysMc
+execute as @p run whitelist add oidoldol
+execute as @p run whitelist add Attack
+execute as @p run whitelist add Rindin
+execute as @p run whitelist add vNori 
+execute as @p run whitelist add JRichGod
+execute as @p run whitelist add JamezLP
+execute as @p run whitelist add Goat_Wizard
+execute as @p run whitelist add LeggoLogan
+execute as @p run whitelist add bigbeter
+execute as @p run whitelist add TendieFarmer
+execute as @p run whitelist add Snikklees
+execute as @p run whitelist add koolkbraza
+execute as @p run whitelist add TreeRex0
+execute as @p run whitelist add ShoneBow
+execute as @p run whitelist add Worpp
+execute as @p run whitelist add Lavaur
+execute as @p run whitelist add SkywarsLobby
+execute as @p run whitelist add Hinduu
+execute as @p run whitelist add Marshmallows7920
