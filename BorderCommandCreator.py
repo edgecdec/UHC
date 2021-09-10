@@ -23,7 +23,7 @@ CALL_PATH = "uhc:border/"
     #function uhc:border/border_helper
 
 def buildCommands(xCenter, zCenter):
-    line1 = f"worldborder set {baseSize}\n"
+    line1 = f"worldborder set {5 * smallSize}\n"
     line2 = f"worldborder center {xCenter} {zCenter}\n"
     line3 = f"worldborder set {smallSize} {defaultTimeToShrinkOver}\n"
     return f"{line1}{line2}{line3}"

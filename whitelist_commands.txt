@@ -2,3 +2,29 @@
 /whitelist add DumbDumb2
 /whitelist add DumbDumb3
 /whitelist add DumbDumb4
+/whitelist add windcat_
+/whitelist add ZockerPlaysMc
+/whitelist add oidoldol
+/whitelist add Attack
+/whitelist add Rindin
+/whitelist add 
+/whitelist add vNori 
+/whitelist add JRichGod
+/whitelist add 
+/whitelist add JamezLP
+/whitelist add 
+/whitelist add Goat_Wizard
+/whitelist add 
+/whitelist add LeggoLogan
+/whitelist add bigbeter
+/whitelist add TendieFarmer
+/whitelist add Snikklees
+/whitelist add koolkbraza
+/whitelist add TreeRex0
+/whitelist add ShoneBow
+/whitelist add Worpp
+/whitelist add Lavaur
+/whitelist add SkywarsLobby
+/whitelist add Hinduu
+/whitelist add Marshmallows7920
+/whitelist add 

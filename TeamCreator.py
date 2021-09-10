@@ -32,10 +32,13 @@ TEAM_COLORS = [
     "green",
     "light_purple",
     "red",
-    "yellow"
+    "yellow",
+    "black",
+    "white"
     ]
 
-resultsDict = csv.DictReader(open("IML UHC Team Signup.csv"))
+resultsDict = csv.DictReader(open("IML UHC Team Signup.csv", encoding='utf-8'))
+
 teams = []
 for result in resultsDict:
     teamName = result[TEAM_NAME_Q]
@@ -47,12 +50,13 @@ for team in teams:
     print(team)
 
 # Create Teams and add players to them
-with open(startPath + "create_teams.mcfunction", "w") as outfile:
+with open(startPath + "create_teams_temp.mcfunction", "w") as outfile:
     for team in teams:
         curTeamNum = team.getNumber()
         outfile.write(f'#Create Team {curTeamNum} and add players\n')
         outfile.write(f'team add team{curTeamNum} "Team {curTeamNum}"\n')
         outfile.write(f'team modify team{curTeamNum} color {team.getTeamColorName()}\n')
+        outfile.write(f'team modify team{curTeamNum} friendlyFire false\n')
         for player in team.players:
             outfile.write(f'team join team{curTeamNum} {player}\n')
         outfile.write(f'\n')
