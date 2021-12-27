@@ -1,1 +1,1 @@
-worldborder set 128 3600
+worldborder set 64 5400

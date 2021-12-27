@@ -2,14 +2,14 @@ import os
 import zipfile
 
 #Diameters of borders
-baseSize = 128
+baseSize = 64
 smallSize = baseSize / 3
 
 #TIMES ARE IN SECONDS
 initialTimeBeforeStartShrinking = 30 * 60
-initialTimeToShrinkOver = 60 * 60
+initialTimeToShrinkOver = 90 * 60
 defaultTimeToShrinkOver = 2 * 60
-initialWorldBorderDiameter = 4000
+initialWorldBorderDiameter = 2000
 timeBetweenShrinks = 1 * 60
 
 #Center Coords
